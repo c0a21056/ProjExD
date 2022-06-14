@@ -8,13 +8,13 @@ m = [] #取り出した文字を入れるList
 
 def main():
     st = datetime.datetime.now()
-    a()
+    mozi()
     num()
     seikai()
     ed = datetime.datetime.now()
     print((ed-st).seconds)
 
-def a():
+def mozi():
     alp = [chr(c+65) for c in range(26)]
     a = random.sample(alp,t)
     print("対象文字：")
