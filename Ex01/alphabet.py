@@ -10,6 +10,7 @@ def main():
     st = datetime.datetime.now()
     a()
     num()
+    seikai()
     ed = datetime.datetime.now()
     print((ed-st).seconds)
 
@@ -28,7 +29,6 @@ def num():
     ans = int(input("欠損文字数はいくつあるでしょうか？："))
     if ans == int(k):
          print("正解です。それでは、具体的に欠損文字を1つずつ入力してください")
-         seikai()
     else:
         print("違いますもう一度入力してください")
         num()
