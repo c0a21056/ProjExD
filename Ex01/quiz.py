@@ -1,4 +1,4 @@
-import random
+import random #あ
 
 def main():
     seikai = shutudai()
