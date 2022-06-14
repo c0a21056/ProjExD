@@ -14,7 +14,7 @@ def main():
     ed = datetime.datetime.now()
     print((ed-st).seconds)
 
-def mozi():
+def mozi(): #文字の表示
     alp = [chr(c+65) for c in range(26)]
     a = random.sample(alp,t)
     print("対象文字：")
