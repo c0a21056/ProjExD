@@ -54,10 +54,7 @@ if __name__ == "__main__":
             d = 0
 
     for i,num in enumerate([i for i in list1]):#割り算以外の四則演算の計算記号と=の表示
-        if i == 4:
-            button = tk.Button(root, text = f"{num}", width = 3, height = 1,bg="blue", font=("Times New Roman", 30))
-        else:
-            button = tk.Button(root, text = f"{num}", width = 3, height = 1, font=("Times New Roman", 30))
+        button = tk.Button(root, text = f"{num}", width = 3, height = 1, font=("Times New Roman", 30)) #表示するボタンの設定
         button.grid(row = a, column = 3)
         a += 1
         button.bind("<1>", button_click)
