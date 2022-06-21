@@ -13,7 +13,6 @@ list2 = ["%","CE","AC","C","(",")","√","/"] #deleteと()、割り算、％、�
 def button_click(event):
     btn = event.widget
     num = btn["text"]
-    #tkm.showinfo(num, f"[{num}]ボタンが押されました")
     if num == "=": #計算結果の表示
         a = entry.get()
         ans = eval(a)
