@@ -30,8 +30,7 @@ def main_proc():
     cx, cy = mx*100+50, my*100+50
     canvas.coords("tori", cx, cy)
     canvas.create_image(cx, cy, image=tori, tag = "tori")
-    if cx == 1350:
-        if cy == 750:
+    if cx == 1350 and cy == 750:
             tkm.showinfo("ゴール", "ゴールにつきました")
 
 if __name__ == "__main__":
