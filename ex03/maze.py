@@ -45,7 +45,7 @@ if __name__ == "__main__":
     b = random.randint(0,9)
     tori = tk.PhotoImage(file = f"fig/{b}.png")
     mx,my = 1,1
-    cx, cy = mx*150, my*150
+    cx, cy = mx*100+50, my*100+50
     canvas.create_rectangle(100, 100, 200, 200,fill="blue")
     canvas.create_rectangle(1300, 700, 1400, 800,fill="red")
     canvas.create_image(cx, cy, image=tori, tag = "tori")
