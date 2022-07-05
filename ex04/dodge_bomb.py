@@ -50,7 +50,7 @@ def main():
             if key_lit[pg.K_LEFT] : tori_rect.centerx +=1
             if key_lit[pg.K_RIGHT] : tori_rect.centerx -=1
 
-        if tori_rect.colliderect(bomb_rect) :
+        if tori_rect.colliderect(bomb_rect) :#こうかとんと爆弾がぶつかったとき
             x =  tori_rect.centerx
             y =  tori_rect.centery
             b = random.randint(0,9)
@@ -62,15 +62,15 @@ def main():
             vy *= -1
             i += 1
         
-        if i >= 3:
+        if i >= 3:#三回こうかとんと爆弾がぶつかったなら終了する
             tkm.showinfo("ゲームオーバー", "ゲームオーバーです")
             return pg.QUIT
         
-        if key_lit[pg.K_u] :
+        if key_lit[pg.K_u] :#爆弾の速度を早くする
             vx *=1.02
             vy *=1.02
 
-        if key_lit[pg.K_b] :
+        if key_lit[pg.K_b] :#爆弾の大きさの変更
             x =  bomb_rect.centerx
             y =  bomb_rect.centery
             a+=0.5
@@ -82,7 +82,7 @@ def main():
             bomb_rect.centery = y
 
 
-        if key_lit[pg.K_s] :
+        if key_lit[pg.K_s] :#爆弾の大きさの変更
             x =  bomb_rect.centerx
             y =  bomb_rect.centery
             a-=0.5
