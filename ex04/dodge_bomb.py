@@ -4,7 +4,6 @@ import random
 import tkinter.messagebox as tkm
 
 i=0
-c=0
 a=0
 
 def main():
@@ -32,7 +31,7 @@ def main():
 
     
     while True:
-        global i,c,a
+        global i,a
 
         screen_sfc.blit(bgimg_sfc,bgimg_rect)
 
