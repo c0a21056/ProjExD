@@ -40,18 +40,18 @@ def main():
             if event.type == pg.QUIT: return #xを押した場合の処理
 
         key_lit = pg.key.get_pressed() #こうかとんの移動
-        if key_lit[pg.K_UP] == True: tori_rect.centery -=1
-        if key_lit[pg.K_DOWN] == True: tori_rect.centery +=1
-        if key_lit[pg.K_LEFT] == True: tori_rect.centerx -=1
-        if key_lit[pg.K_RIGHT] == True: tori_rect.centerx +=1
+        if key_lit[pg.K_UP] : tori_rect.centery -=1
+        if key_lit[pg.K_DOWN] : tori_rect.centery +=1
+        if key_lit[pg.K_LEFT] : tori_rect.centerx -=1
+        if key_lit[pg.K_RIGHT] : tori_rect.centerx +=1
 
         if check_bound(tori_rect, screen_rect) != (1,1):
-            if key_lit[pg.K_UP] == True: tori_rect.centery +=1
-            if key_lit[pg.K_DOWN] == True: tori_rect.centery -=1
-            if key_lit[pg.K_LEFT] == True: tori_rect.centerx +=1
-            if key_lit[pg.K_RIGHT] == True: tori_rect.centerx -=1
+            if key_lit[pg.K_UP] : tori_rect.centery +=1
+            if key_lit[pg.K_DOWN] : tori_rect.centery -=1
+            if key_lit[pg.K_LEFT] : tori_rect.centerx +=1
+            if key_lit[pg.K_RIGHT] : tori_rect.centerx -=1
 
-        if tori_rect.colliderect(bomb_rect) == True:
+        if tori_rect.colliderect(bomb_rect) :
             x =  tori_rect.centerx
             y =  tori_rect.centery
             b = random.randint(0,9)
@@ -67,11 +67,11 @@ def main():
             tkm.showinfo("ゲームオーバー", "ゲームオーバーです")
             return pg.QUIT
         
-        if key_lit[pg.K_u] == True:
+        if key_lit[pg.K_u] :
             vx *=1.02
             vy *=1.02
 
-        if key_lit[pg.K_b] == True:
+        if key_lit[pg.K_b] :
             x =  bomb_rect.centerx
             y =  bomb_rect.centery
             a+=0.5
@@ -83,7 +83,7 @@ def main():
             bomb_rect.centery = y
 
 
-        if key_lit[pg.K_s] == True:
+        if key_lit[pg.K_s] :
             x =  bomb_rect.centerx
             y =  bomb_rect.centery
             a-=0.5
