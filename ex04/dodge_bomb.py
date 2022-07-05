@@ -3,8 +3,8 @@ import sys
 import random
 import tkinter.messagebox as tkm
 
-i=0
-a=0
+i=0 #こうかとんと爆弾がぶつかった回数
+a=0 #爆弾の大きさの変更用
 
 def main():
     clock = pg.time.Clock()
