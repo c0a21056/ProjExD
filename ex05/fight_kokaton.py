@@ -113,15 +113,10 @@ class Beam:
 
 def main():
     clock = pg.time.Clock()
-
     scr = Screen("負けるな！こうかとん", (1600, 900), "fig/pg_bg.jpg")
-
     tori = Bird("fig/6.png",2.0,(900, 400))
-
     bomb = Bomb((255,0,0), 10, (+1, +1), scr)
-
     enemy = Enemy("fig/a.png",0.5, (+1,+1) ,scr)
-
     beam = Beam("fig/beam.png",0.05, tori.rct.centerx,tori.rct.centery, (+1,+0) ,scr)
 
     while True:
