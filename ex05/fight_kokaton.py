@@ -15,7 +15,7 @@ class Screen:
         self.sfc.blit(self.bgi_sfc, self.bgi_rct)
 
 
-class Bird:
+class Bird: #こうかとん
     def __init__(self, image: str, size: float, xy):
         self.sfc = pg.image.load(image)                      # Surface
         self.sfc = pg.transform.rotozoom(self.sfc, 0, size)  # Surface
@@ -25,7 +25,7 @@ class Bird:
     def blit(self,scr: Screen):
         scr.sfc.blit(self.sfc,self.rct)
 
-    def update(self, scr: Screen):
+    def update(self, scr: Screen): #こうかとんの移動
         key_states = pg.key.get_pressed() # 辞書
         if key_states[pg.K_UP] : 
             self.rct.centery -= 1
@@ -48,7 +48,7 @@ class Bird:
         self.blit(scr)
 
 
-class Bomb:
+class Bomb: #爆弾
     def __init__(self, color ,size, vxy, scr: Screen):
         self.sfc = pg.Surface((size*2,size*2)) # Surface
         self.sfc.set_colorkey((0,0,0)) 
@@ -61,7 +61,7 @@ class Bomb:
     def blit(self, scr: Screen):
         scr.sfc.blit(self.sfc,self.rct)
 
-    def update(self, scr :Screen):
+    def update(self, scr :Screen): #爆弾の移動
         self.rct.move_ip(self.vx, self.vy)
 
         yoko, tate = check_bound(self.rct, scr.rct)
@@ -70,7 +70,7 @@ class Bomb:
 
         self.blit(scr)
 
-class Enemy:
+class Enemy: #敵
     def __init__(self, image: str, size: float, xy ,scr: Screen):
         self.sfc = pg.image.load(image)                      # Surface
         self.sfc = pg.transform.rotozoom(self.sfc, 0, size)  # Surface
@@ -83,7 +83,7 @@ class Enemy:
         scr.sfc.blit(self.sfc,self.rct)
 
     
-    def update(self, scr :Screen):
+    def update(self, scr :Screen): #敵の移動
         self.rct.move_ip(self.vx, self.vy)
 
         yoko, tate = check_bound(self.rct, scr.rct)
@@ -93,7 +93,7 @@ class Enemy:
         self.blit(scr)
 
 
-class Beam:
+class Beam: #ビーム
     def __init__(self, image: str, size: float, x, y, vx, scr:Screen ):
         self.sfc = pg.image.load(image)                      # Surface
         self.sfc = pg.transform.rotozoom(self.sfc, 0, size)  # Surface
@@ -105,7 +105,7 @@ class Beam:
     def blit(self,scr: Screen):
         scr.sfc.blit(self.sfc,self.rct)
 
-    def update(self, scr: Screen):
+    def update(self, scr: Screen): #ビームの移動
         self.rct.move_ip(self.vx, self.vy) 
 
         self.blit(scr)
@@ -126,20 +126,18 @@ def main():
             if event.type == pg.QUIT: return
 
         tori.update(scr)
-
         bomb.update(scr)
-
         enemy.update(scr)
 
-        key_states = pg.key.get_pressed()
-        if key_states[pg.K_SPACE] :
+        key_states = pg.key.get_pressed() 
+        if key_states[pg.K_SPACE] : #ビームを撃つ
             beam.update(scr)
 
-        if beam.rct.colliderect(enemy.rct):
+        if beam.rct.colliderect(enemy.rct): #ビームを敵に当てたらクリア
             tkm.showinfo("ゲームクリア", "ゲームクリアです")
             return
 
-        if tori.rct.colliderect(bomb.rct) or tori.rct.colliderect(enemy.rct):
+        if tori.rct.colliderect(bomb.rct) or tori.rct.colliderect(enemy.rct): #爆弾か敵に当たったらゲームオーバー
             tkm.showinfo("ゲームオーバー", "ゲームオーバーです")
             return
 
@@ -149,10 +147,6 @@ def main():
 
 # 練習7
 def check_bound(rct, scr_rct):
-    '''
-    [1] rct: こうかとん or 爆弾のRect
-    [2] scr_rct: スクリーンのRect
-    '''
     yoko, tate = +1, +1 # 領域内
     if rct.left < scr_rct.left or scr_rct.right  < rct.right :
         yoko = -1 # 領域外
