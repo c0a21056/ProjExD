@@ -139,11 +139,7 @@ def main():
             tkm.showinfo("ゲームクリア", "ゲームクリアです")
             return
 
-        if tori.rct.colliderect(bomb.rct):
-            tkm.showinfo("ゲームオーバー", "ゲームオーバーです")
-            return
-        
-        if tori.rct.colliderect(enemy.rct):
+        if tori.rct.colliderect(bomb.rct) or tori.rct.colliderect(enemy.rct):
             tkm.showinfo("ゲームオーバー", "ゲームオーバーです")
             return
 
