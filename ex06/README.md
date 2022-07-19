@@ -14,3 +14,7 @@
 - ブロックにボールが二回当たったら消えるようにする
 - 残機が減少後ボールを消してキー(s)を押すとボールが出るようにする
 - ブロックにボールが当たっても反応せずにscoreが増加しない
+### 参考サイト
+- Pythonスクリプト【Pygameでスプライトを使おう https://mulberrytassel.com/python-practice-pygame-6/
+- Pygameのドキュメント（日本語訳） http://westplain.sakuraweb.com/translate/pygame/
+- 【Pygame】ブロック崩しの作り方（効果音付き) https://algorithm.joho.info/programming/python/pygame-blockout/
