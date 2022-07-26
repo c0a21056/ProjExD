@@ -41,7 +41,7 @@ class Bou: #ボールを反射する棒
 
 
 class Ball: #ボール
-    def __init__(self, color ,size, xy, vxy, ):
+    def __init__(self, color ,size, xy, vxy):
         self.sfc = pg.Surface((size*2,size*2)) 
         self.sfc.set_colorkey((0,0,0)) 
         pg.draw.circle(self.sfc, color, (size,size),size)
@@ -64,7 +64,7 @@ class Ball: #ボール
     def bound(self): #ボールが棒に当たったら反射する処理
         self.vy *= -1.0
 
-
+#下田,近藤　Line68~79
 class Score(): #Score
     def __init__(self, x, y):
         self.sysfont = pg.font.SysFont(None, 25)
@@ -78,7 +78,7 @@ class Score(): #Score
     def add_score(self, x): #Scoreの増加
         self.score += x
 
-#近藤翔太 Line84~100
+#近藤,村田 Line82~98
 class Start(): #Start
     def __init__(self, x, y):
         self.sysfont = pg.font.SysFont(None, 25)
@@ -97,7 +97,7 @@ class Start(): #Start
         img = self.sysfont.render("Quitgame=q", True, (0,255,255))
         scr.sfc.blit(img, (self.x, self.y))
 
-
+#近藤,山口 Line101~112
 class Life(): #残機
     def __init__(self, x, y):
         self.sysfont = pg.font.SysFont(None, 25)
@@ -111,8 +111,7 @@ class Life(): #残機
     def deg_life(self): #残機の減少
         self.life -= 1
 
-
-#澤井優希 Line118~146
+#澤井,下田,小嶋 Line115~140
 block = []
 for i in range(8): #ブロックの情報リスト
     for j in range(10):
@@ -121,7 +120,6 @@ for i in range(8): #ブロックの情報リスト
 
 #ブロック関数
 def Block(scr:Screen, ball:Ball, score:Score, a):
-    block_count = 0
     for i in range(len(block)):
         x = block[i]["x"]
         y = block[i]["y"]
@@ -135,13 +133,11 @@ def Block(scr:Screen, ball:Ball, score:Score, a):
             else:
                 score.add_score(10)    
 
-        #ブロックのステータス
+        #ブロックの表示
         if st == 1:
             pg.draw.rect(scr.sfc, (a/2, a/2, a/2), (x, y, 70, 30))
-            block_count += 1
         if st == 2:
             pg.draw.rect(scr.sfc, (a, a, a), (x, y, 70, 30))
-            block_count += 1
 
 
 def main():
@@ -155,7 +151,6 @@ def main():
     restart = Start(380, 10)
     quit = Start(500, 10)
     a = 0
-
 
     while True:
         scr.blit()
@@ -171,7 +166,7 @@ def main():
             if event.type == pg.QUIT:
                 return
 
-        #近藤翔太 Line177~204
+        #近藤,村田,小嶋 Line170~197
         key_states = pg.key.get_pressed() 
         if key_states[pg.K_r] : #キー(r)を押したらリスタート
             return main()
@@ -198,7 +193,7 @@ def main():
         if life.life == 0: #残機が0ならゲームオーバー
             return tkm.showinfo("ゲームオーバー", f"残機が{life.life}になったのでゲームオーバーです")
         
-        if score.score >= 500:
+        if score.score >= 100:
             return tkm.showinfo("ゲームクリア", f"Scoreが{score.score}になりました。ゲームクリアおめでとう！！")
 
         pg.display.update()
