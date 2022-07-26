@@ -68,15 +68,15 @@ class Ball: #ボール
 class Score(): #Score
     def __init__(self, x, y):
         self.sysfont = pg.font.SysFont(None, 25)
-        self.score = 0
+        self.s = 0 #現在のScore
         (self.x, self.y) = (x, y)
 
     def draw(self, scr:Screen): #Scoreの表示
-        img = self.sysfont.render("SCORE:"+str(self.score), True, (255,255,250))
+        img = self.sysfont.render("SCORE:"+str(self.s), True, (255,255,250))
         scr.sfc.blit(img, (self.x, self.y))
 
     def add_score(self, x): #Scoreの増加
-        self.score += x
+        self.s += x
 
 #近藤,村田 Line82~98
 class Start(): #Start
@@ -101,15 +101,15 @@ class Start(): #Start
 class Life(): #残機
     def __init__(self, x, y):
         self.sysfont = pg.font.SysFont(None, 25)
-        self.life = 3
+        self.l = 3 #残機
         (self.x, self.y) = (x, y)
 
     def draw(self, scr:Screen): #残機の表示
-        img = self.sysfont.render("Life:"+str(self.life-1), True, (255,255,250))
+        img = self.sysfont.render("Life:"+str(self.l-1), True, (255,255,250))
         scr.sfc.blit(img, (self.x, self.y))
 
     def deg_life(self): #残機の減少
-        self.life -= 1
+        self.l -= 1
 
 #澤井,下田,小嶋 Line115~140
 block = []
@@ -190,17 +190,16 @@ def main():
             if ball == None:
                 ball = Ball((255,0,0), 10, (325,500), (+1,+1))
 
-        if life.life == 0: #残機が0ならゲームオーバー
-            return tkm.showinfo("ゲームオーバー", f"残機が{life.life}になったのでゲームオーバーです")
+        if life.l == 0: #残機が0ならゲームオーバー
+            return tkm.showinfo("ゲームオーバー", f"残機が{life.l}になったのでゲームオーバーです")
         
-        if score.score >= 100:
-            return tkm.showinfo("ゲームクリア", f"Scoreが{score.score}になりました。ゲームクリアおめでとう！！")
+        if score.s >= 100:
+            return tkm.showinfo("ゲームクリア", f"Scoreが{score.s}になりました。ゲームクリアおめでとう！！")
 
         pg.display.update()
         clock.tick(1000)
 
 def check_bound(rct, scr_rct):
-    global life
     yoko, tate = +1, +1 # 領域内
     if rct.left < scr_rct.left or scr_rct.right  < rct.right :
         yoko = -1 # 領域外
