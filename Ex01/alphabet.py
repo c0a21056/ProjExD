@@ -12,7 +12,7 @@ def main():
     num()
     seikai()
     ed = datetime.datetime.now()
-    print((ed-st).seconds)
+    print(str((ed-st).seconds) + "秒" )
 
 def mozi(): #文字の表示
     alp = [chr(c+65) for c in range(26)]

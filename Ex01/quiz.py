@@ -13,7 +13,7 @@ def shutudai():
 
 
 def kaito(seikai):
-    ans = input("答えるんだ")
+    ans = input("答えるんだ：")
     if ans in seikai:
          print("正解！！！")
     else:
