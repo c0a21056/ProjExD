@@ -150,7 +150,7 @@ def main():
     start = Start(230, 10)
     restart = Start(380, 10)
     quit = Start(500, 10)
-    a = 0
+    a = 0 #ボールを作成か削除か決める変数
 
     while True:
         scr.blit()
@@ -174,7 +174,7 @@ def main():
         if key_states[pg.K_q]:
             return
         
-        if key_states[pg.K_s]:
+        if key_states[pg.K_s]: #キー(s)を押したらボールを生成するための変数に１を入れる
             a = 1
         
         if a == 1:
