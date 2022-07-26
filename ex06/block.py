@@ -177,7 +177,7 @@ def main():
         if key_states[pg.K_s]: #キー(s)を押したらボールを生成するための変数に１を入れる
             a = 1
         
-        if a == 1:
+        if a == 1: #a = 1 ならボールを表示する
             ball.update(scr)
 
         if bou.rct.colliderect(ball.rct): #ボールが棒に当たったら反射する関数を呼び出す
